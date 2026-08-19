@@ -1,0 +1,1 @@
+- [Expo root routing](expo-root-routing.md) — Expo mobile previews need an explicit app/index.tsx route that redirects into tab groups.
