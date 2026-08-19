@@ -1,0 +1,1472 @@
+# Build a Full-Stack PetCare Platform
+
+## 1. Project Overview
+
+Build a modern, production-quality full-stack web application called **PetCare**.
+
+PetCare is an all-in-one pet-care platform combining:
+
+* Pet food e-commerce
+* Personalized pet food recommendations
+* Recurring food subscriptions
+* Veterinary recommendations
+* Online veterinary consultations
+* Pet health records
+* Pet-care reminders
+* Order and delivery tracking
+* Payments
+* AI-powered pet-care assistance
+* Admin, veterinarian, vendor, and delivery dashboards
+
+The application should feel like a modern commercial SaaS/e-commerce product, not a basic student CRUD application.
+
+The platform must be responsive and work beautifully on desktop, tablet, and mobile.
+
+---
+
+# 2. Technology Stack
+
+Use the following architecture unless there is a strong technical reason to improve it:
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router
+* TanStack Query
+* Axios
+* Lucide React icons
+* Recharts for analytics
+* Modern component-based architecture
+
+### Backend
+
+Use:
+
+* Node.js
+* Express.js
+* TypeScript
+
+Create a clean REST API.
+
+### Database
+
+Use:
+
+* PostgreSQL
+* Prisma ORM
+
+### Authentication
+
+Implement:
+
+* JWT authentication
+* Secure password hashing using bcrypt
+* Refresh tokens
+* Role-based access control
+* Protected routes
+
+### Other services
+
+Structure the application so that the following can be integrated:
+
+* M-Pesa payments
+* Card payments
+* Email notifications
+* SMS notifications
+* Push notifications
+* Video consultations
+* AI services
+* Maps/delivery tracking
+
+For development, create mock/sandbox implementations where real credentials are unavailable.
+
+---
+
+# 3. User Roles
+
+The application must support these roles:
+
+```text
+CUSTOMER
+VETERINARIAN
+VENDOR
+DELIVERY_AGENT
+ADMIN
+SUPER_ADMIN
+```
+
+Each role must have its own permissions and dashboard.
+
+---
+
+# 4. Customer Features
+
+Customers should be able to:
+
+* Create an account
+* Log in
+* Reset password
+* Manage profile
+* Add multiple pets
+* Manage pet information
+* Browse pet products
+* Search products
+* Filter products
+* View product details
+* Add products to cart
+* Checkout
+* Make payments
+* Track orders
+* Subscribe to recurring food deliveries
+* Pause subscriptions
+* Resume subscriptions
+* Skip deliveries
+* Change delivery dates
+* Change subscription products
+* Change subscription quantities
+* Cancel subscriptions
+* View veterinary recommendations
+* Book veterinary consultations
+* Chat with veterinarians
+* Upload pet documents/images
+* Manage pet medical records
+* Receive reminders
+* Leave product reviews
+* Receive notifications
+* Use the AI pet-care assistant
+
+---
+
+# 5. Pet Profiles
+
+Customers must be able to create profiles for each pet.
+
+Pet information should include:
+
+* Pet name
+* Species
+* Breed
+* Gender
+* Date of birth
+* Age
+* Weight
+* Activity level
+* Neutered/spayed status
+* Allergies
+* Dietary restrictions
+* Medical conditions
+* Food preferences
+* Current food
+* Daily feeding amount
+* Profile photo
+
+Example:
+
+```text
+Max
+Golden Retriever
+3 years old
+Male
+28 kg
+High activity
+Allergy: Chicken
+Sensitive stomach
+```
+
+Allow customers to have multiple pets.
+
+---
+
+# 6. Pet Food Marketplace
+
+Create a complete e-commerce marketplace.
+
+Product categories should include:
+
+* Dry food
+* Wet food
+* Puppy food
+* Kitten food
+* Adult food
+* Senior food
+* Prescription/special-diet food
+* Treats
+* Supplements
+* Dental products
+* Cat litter
+* Toys
+* Grooming products
+
+Each product should support:
+
+* Product name
+* Brand
+* Description
+* Images
+* Price
+* Discount price
+* Stock quantity
+* SKU
+* Category
+* Species
+* Suitable age
+* Suitable breeds
+* Weight range
+* Ingredients
+* Nutritional information
+* Calories
+* Allergens
+* Feeding instructions
+* Vendor
+* Reviews
+* Rating
+
+---
+
+# 7. Smart Food Recommendation Engine
+
+Create a recommendation system that analyzes a pet's profile and recommends suitable products.
+
+Consider:
+
+* Species
+* Breed
+* Age
+* Weight
+* Activity level
+* Allergies
+* Dietary restrictions
+* Medical conditions
+* Food preferences
+* Previous purchases
+* Veterinary recommendations
+
+Example:
+
+```text
+Recommended for Max
+
+Hill's Science Diet Sensitive Stomach
+
+Compatibility: 94%
+
+✓ Suitable for adult dogs
+✓ Suitable for Max's weight
+✓ Supports digestive health
+✓ Does not contain Max's restricted ingredient
+✓ Suitable for active dogs
+```
+
+Show a compatibility score.
+
+Do NOT present AI recommendations as medical diagnoses.
+
+For medical conditions, clearly state that a veterinarian should make the final recommendation.
+
+---
+
+# 8. Subscription System
+
+Subscriptions are one of the core features of PetCare.
+
+Customers should be able to subscribe to pet food.
+
+Subscription frequencies:
+
+* Weekly
+* Every 2 weeks
+* Monthly
+* Custom interval
+
+A subscription should contain:
+
+```text
+Pet
+Product
+Quantity
+Frequency
+Price
+Next delivery date
+Payment method
+Delivery address
+Status
+```
+
+Subscription statuses:
+
+```text
+ACTIVE
+PAUSED
+SKIPPED
+CANCELLED
+PAYMENT_FAILED
+```
+
+Customers must be able to:
+
+* Create subscription
+* Pause subscription
+* Resume subscription
+* Skip next delivery
+* Change product
+* Change quantity
+* Change frequency
+* Change delivery date
+* Change payment method
+* Cancel subscription
+
+---
+
+# 9. Smart Food Consumption Prediction
+
+Create a system that estimates when a pet will run out of food.
+
+Example:
+
+```text
+Food quantity: 12 kg
+Daily consumption: 350 g
+
+Estimated remaining:
+34 days
+
+Next delivery:
+September 22
+```
+
+Automatically notify the customer when food is expected to run out soon.
+
+Example:
+
+> Max's food is expected to run out in approximately 7 days.
+
+Allow the customer to adjust the predicted consumption.
+
+---
+
+# 10. Veterinary System
+
+Create a dedicated veterinarian portal.
+
+Veterinarians should be able to:
+
+* Register
+* Submit credentials
+* Be verified by administrators
+* Create professional profiles
+* Set availability
+* Manage appointments
+* View assigned pets
+* View pet medical information
+* Review allergies
+* Review food history
+* Review previous consultations
+* Recommend products
+* Create nutrition plans
+* Add medical notes
+* Upload documents
+* Communicate with customers
+
+---
+
+# 11. Veterinary Recommendations
+
+Veterinarians should be able to recommend specific products.
+
+Example:
+
+```text
+Veterinary Recommendation
+
+Pet:
+Max
+
+Recommended food:
+Hill's Science Diet Sensitive Stomach
+
+Feeding:
+350g per day
+
+Duration:
+30 days
+
+Reason:
+Digestive support
+
+Recommended by:
+Dr. Sarah
+
+Date:
+August 19, 2026
+```
+
+Customers should receive a notification when a veterinarian creates a recommendation.
+
+---
+
+# 12. Veterinary Consultation
+
+Allow customers to book consultations.
+
+Consultation types:
+
+* Chat
+* Audio
+* Video
+
+Customers should be able to:
+
+1. Select veterinarian
+2. View availability
+3. Select date
+4. Select time
+5. Select pet
+6. Describe issue
+7. Upload images/documents
+8. Pay consultation fee
+9. Attend consultation
+
+Consultation statuses:
+
+```text
+REQUESTED
+CONFIRMED
+IN_PROGRESS
+COMPLETED
+CANCELLED
+NO_SHOW
+```
+
+---
+
+# 13. Veterinary Chat
+
+Create real-time chat between customers and veterinarians.
+
+Support:
+
+* Text messages
+* Images
+* Documents
+* Read receipts
+* Typing indicators
+* Online/offline status
+* Notifications
+
+Use WebSockets/Socket.IO if appropriate.
+
+---
+
+# 14. Pet Health Records
+
+Each pet should have a health timeline.
+
+Display:
+
+```text
+Pet Health Timeline
+
+Aug 19
+🩺 Veterinary consultation
+
+Aug 12
+💊 Medication added
+
+Jul 25
+💉 Vaccination
+
+Jul 01
+⚖ Weight updated
+
+Jun 20
+🍖 New food recommended
+```
+
+Records can include:
+
+* Vaccinations
+* Medications
+* Veterinary visits
+* Allergies
+* Diagnoses
+* Weight changes
+* Nutrition plans
+* Uploaded documents
+
+---
+
+# 15. Pet-Care Reminders
+
+Create reminders for:
+
+* Feeding
+* Medication
+* Vaccination
+* Deworming
+* Flea/tick treatment
+* Grooming
+* Dental care
+* Veterinary appointments
+* Food deliveries
+
+Allow users to:
+
+* Create reminders
+* Edit reminders
+* Delete reminders
+* Mark reminders complete
+* Configure notification preferences
+
+---
+
+# 16. E-Commerce Cart and Checkout
+
+Create a complete shopping cart.
+
+Users should be able to:
+
+* Add products
+* Remove products
+* Change quantities
+* Apply discount codes
+* Select delivery address
+* Select payment method
+* Review order
+* Complete payment
+
+Checkout should display:
+
+```text
+Subtotal
+Delivery fee
+Discount
+Tax
+Total
+```
+
+---
+
+# 17. Payments
+
+Design the payment architecture to support:
+
+* M-Pesa
+* Credit/debit cards
+* Other mobile money methods
+
+For development, implement a mock payment provider if live credentials are unavailable.
+
+Create payment statuses:
+
+```text
+PENDING
+PROCESSING
+SUCCESS
+FAILED
+REFUNDED
+```
+
+Never store raw card details.
+
+---
+
+# 18. Orders
+
+Customers should have an order history.
+
+Each order should include:
+
+```text
+Order ID
+Products
+Pet
+Subtotal
+Delivery fee
+Discount
+Total
+Payment status
+Order status
+Delivery address
+Order date
+Estimated delivery
+```
+
+Order statuses:
+
+```text
+PENDING
+CONFIRMED
+PROCESSING
+PACKED
+DISPATCHED
+OUT_FOR_DELIVERY
+DELIVERED
+CANCELLED
+REFUNDED
+```
+
+---
+
+# 19. Delivery Tracking
+
+Create delivery management.
+
+Delivery agents should be able to:
+
+* View assigned deliveries
+* Accept deliveries
+* Update delivery status
+* View customer information
+* View delivery address
+* Contact customer
+* Mark delivery completed
+
+Customers should see:
+
+```text
+Order #PF-10294
+
+✓ Order Confirmed
+✓ Food Prepared
+✓ Dispatched
+● Out for Delivery
+○ Delivered
+```
+
+Create the architecture so GPS tracking can be added later.
+
+---
+
+# 20. Vendor Portal
+
+Vendors should be able to:
+
+* Register
+* Manage company profile
+* Add products
+* Edit products
+* Manage inventory
+* View orders
+* Update order status
+* View sales
+* View revenue
+* Manage product images
+* Manage pricing
+
+Vendor dashboard:
+
+```text
+Products
+42
+
+Orders
+328
+
+Revenue
+KSh 842,500
+
+Low Stock
+6
+```
+
+---
+
+# 21. Admin Dashboard
+
+Create a powerful admin dashboard.
+
+Administrators should manage:
+
+### Users
+
+* Customers
+* Veterinarians
+* Vendors
+* Delivery agents
+
+### Products
+
+* Products
+* Categories
+* Brands
+* Inventory
+
+### Orders
+
+* Orders
+* Refunds
+* Delivery
+
+### Subscriptions
+
+* Active
+* Paused
+* Cancelled
+* Failed payments
+
+### Veterinary system
+
+* Verify veterinarians
+* Manage consultations
+* Monitor recommendations
+
+### Content
+
+* Banners
+* Promotions
+* FAQs
+
+### Analytics
+
+* Revenue
+* Orders
+* Users
+* Subscriptions
+* Products
+* Vet consultations
+
+---
+
+# 22. Analytics Dashboard
+
+Use beautiful charts.
+
+Show:
+
+```text
+Total Revenue
+Monthly Revenue
+Orders
+Active Subscriptions
+Subscription Growth
+Customer Growth
+Veterinary Consultations
+Top Products
+Top Vendors
+Pet Species Distribution
+```
+
+Use Recharts.
+
+Include filters such as:
+
+* Today
+* 7 days
+* 30 days
+* 3 months
+* 12 months
+
+---
+
+# 23. AI Pet Assistant
+
+Create an AI assistant interface called:
+
+**PetCare AI**
+
+Users can ask general pet-care questions.
+
+Examples:
+
+> What food is suitable for my dog?
+
+> How often should I feed my kitten?
+
+> What products are suitable for Max?
+
+> When should Max receive his next food delivery?
+
+The assistant should use the pet profile where appropriate.
+
+Important safety rule:
+
+The AI must not diagnose diseases or prescribe medication.
+
+For potentially serious symptoms, tell the user to consult a veterinarian.
+
+---
+
+# 24. Notifications
+
+Create a notification system.
+
+Notifications should cover:
+
+* Order confirmation
+* Payment confirmation
+* Delivery updates
+* Subscription renewal
+* Food running low
+* Vet appointment
+* Vet recommendation
+* New chat message
+* Reminder
+* Failed payment
+
+Support in-app notifications first.
+
+Structure the system so email, SMS, and push notifications can be added later.
+
+---
+
+# 25. Customer Dashboard UI
+
+Create a premium dashboard.
+
+Example:
+
+```text
+Good evening 👋
+
+Your Pets
+
+🐕 Max
+Golden Retriever
+28 kg
+
+Food remaining
+████████░░ 80%
+
+Estimated remaining:
+12 days
+
+Next delivery:
+August 29
+
+
+🐈 Luna
+Persian Cat
+4.2 kg
+
+Food remaining:
+██████░░░░ 60%
+
+Next delivery:
+September 3
+
+
+Upcoming
+
+🩺 Vet appointment
+August 24 · 3:00 PM
+
+🍖 Food delivery
+August 29
+
+💉 Vaccination
+September 12
+```
+
+---
+
+# 26. UI/UX Design
+
+The application should have a premium modern design.
+
+Design characteristics:
+
+* Clean
+* Friendly
+* Professional
+* Trustworthy
+* Modern
+* Pet-focused
+
+Use:
+
+* Rounded cards
+* Soft shadows
+* Excellent spacing
+* Beautiful pet imagery
+* Modern typography
+* Responsive layouts
+* Smooth hover states
+* Loading skeletons
+* Toast notifications
+* Empty states
+* Error states
+* Confirmation dialogs
+
+Use a consistent design system throughout the application.
+
+Do not make every page look like a generic admin template.
+
+---
+
+# 27. Main Navigation
+
+Customer navigation:
+
+```text
+Home
+Shop
+My Pets
+Subscriptions
+Veterinarians
+Consultations
+Orders
+Health Records
+Reminders
+AI Assistant
+Profile
+```
+
+Admin navigation:
+
+```text
+Dashboard
+Users
+Pets
+Products
+Categories
+Orders
+Subscriptions
+Veterinarians
+Consultations
+Vendors
+Deliveries
+Payments
+Analytics
+Notifications
+Settings
+```
+
+Vet navigation:
+
+```text
+Dashboard
+Appointments
+My Patients
+Recommendations
+Nutrition Plans
+Messages
+Availability
+Profile
+```
+
+Vendor navigation:
+
+```text
+Dashboard
+Products
+Inventory
+Orders
+Customers
+Sales
+Payouts
+Profile
+```
+
+Delivery navigation:
+
+```text
+Dashboard
+Assigned Deliveries
+Active Delivery
+Completed Deliveries
+Profile
+```
+
+---
+
+# 28. Database Design
+
+Create a properly normalized PostgreSQL database using Prisma.
+
+Core entities should include:
+
+```text
+User
+Role
+Pet
+Breed
+PetAllergy
+PetDietaryRestriction
+PetMedicalCondition
+Product
+ProductCategory
+Brand
+Vendor
+Inventory
+Cart
+CartItem
+Order
+OrderItem
+Subscription
+SubscriptionItem
+Payment
+Delivery
+Address
+Veterinarian
+VeterinarianAvailability
+Consultation
+ConsultationMessage
+VetRecommendation
+NutritionPlan
+MedicalRecord
+Vaccination
+Medication
+Reminder
+Notification
+Review
+Coupon
+AuditLog
+```
+
+Use proper relationships, foreign keys, indexes, timestamps, and constraints.
+
+---
+
+# 29. REST API
+
+Create clean REST endpoints.
+
+Examples:
+
+```text
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/refresh
+POST /api/auth/logout
+
+GET /api/pets
+POST /api/pets
+GET /api/pets/:id
+PUT /api/pets/:id
+DELETE /api/pets/:id
+
+GET /api/products
+GET /api/products/:id
+POST /api/products
+PUT /api/products/:id
+
+GET /api/cart
+POST /api/cart/items
+PUT /api/cart/items/:id
+DELETE /api/cart/items/:id
+
+POST /api/orders
+GET /api/orders
+GET /api/orders/:id
+
+GET /api/subscriptions
+POST /api/subscriptions
+PUT /api/subscriptions/:id
+POST /api/subscriptions/:id/pause
+POST /api/subscriptions/:id/resume
+POST /api/subscriptions/:id/skip
+DELETE /api/subscriptions/:id
+
+GET /api/vets
+GET /api/vets/:id
+POST /api/consultations
+GET /api/consultations
+
+GET /api/recommendations
+POST /api/recommendations
+
+GET /api/reminders
+POST /api/reminders
+PUT /api/reminders/:id
+DELETE /api/reminders/:id
+```
+
+Implement proper validation and authorization.
+
+---
+
+# 30. Security
+
+Implement:
+
+* Password hashing
+* JWT authentication
+* Refresh tokens
+* Role-based authorization
+* Input validation
+* Rate limiting
+* CORS
+* Helmet
+* Secure HTTP headers
+* SQL injection protection through Prisma
+* Audit logging
+* Secure file uploads
+* Authentication middleware
+
+Users must only access resources they are authorized to access.
+
+For example:
+
+A customer must not be able to access another customer's pet records.
+
+---
+
+# 31. Project Structure
+
+Use a clean architecture similar to:
+
+```text
+petcare/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── contexts/
+│   │   ├── types/
+│   │   └── utils/
+│   │
+│   └── package.json
+│
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   ├── routes/
+│   │   ├── middleware/
+│   │   ├── validators/
+│   │   ├── utils/
+│   │   └── server.ts
+│   │
+│   ├── prisma/
+│   │   └── schema.prisma
+│   │
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+# 32. Seed Data
+
+Create realistic seed data so the application looks populated immediately.
+
+Include:
+
+### Users
+
+* Admin
+* Veterinarians
+* Vendors
+* Customers
+* Delivery agents
+
+### Pets
+
+At least 10 realistic pets.
+
+### Products
+
+At least 30 pet products.
+
+### Orders
+
+Create realistic sample orders.
+
+### Subscriptions
+
+Create active and paused subscriptions.
+
+### Veterinarians
+
+Create several verified veterinarians.
+
+### Consultations
+
+Create upcoming and completed consultations.
+
+---
+
+# 33. Demo Accounts
+
+Create development/demo accounts:
+
+```text
+Admin:
+admin@petcare.test
+
+Veterinarian:
+vet@petcare.test
+
+Vendor:
+vendor@petcare.test
+
+Customer:
+customer@petcare.test
+
+Delivery:
+delivery@petcare.test
+```
+
+Use secure development passwords and clearly document them in the README.
+
+---
+
+# 34. Important Development Rules
+
+Do not build only static pages.
+
+The application must have:
+
+* Real database operations
+* Real authentication
+* Real API communication
+* Real CRUD operations
+* Real subscription logic
+* Real order processing
+* Real role permissions
+* Real validation
+* Real dashboard data
+
+Do not leave major features as buttons that do nothing.
+
+If an external API such as M-Pesa, email, SMS, maps, video, or AI cannot be configured because credentials are unavailable, create a clean mock provider and clearly isolate it so the real provider can be connected later.
+
+---
+
+# 35. Responsive Design
+
+The application must work on:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+Pay special attention to:
+
+* Navigation
+* Product cards
+* Checkout
+* Pet profiles
+* Veterinary consultation
+* Chat
+* Dashboards
+* Tables
+
+On mobile, convert large tables into cards where appropriate.
+
+---
+
+# 36. Error Handling
+
+Implement professional error handling.
+
+Show useful messages such as:
+
+```text
+Unable to process payment.
+
+Please try again or choose another payment method.
+```
+
+Avoid exposing raw backend errors to customers.
+
+Add:
+
+* Loading states
+* Error states
+* Empty states
+* Retry buttons
+* Form validation
+* Toast notifications
+
+---
+
+# 37. Final Product Experience
+
+The finished application should feel like a real startup product.
+
+The user journey should be:
+
+```text
+Register
+   ↓
+Create Pet Profile
+   ↓
+PetCare analyzes profile
+   ↓
+Receive personalized food recommendations
+   ↓
+Browse products
+   ↓
+Purchase food
+   ↓
+Subscribe to recurring delivery
+   ↓
+System predicts food depletion
+   ↓
+Automatic next delivery
+   ↓
+Vet recommendation
+   ↓
+Veterinary consultation
+   ↓
+Pet health records
+   ↓
+Reminders
+   ↓
+Continuous pet-care management
+```
+
+The goal is to create a **complete PetCare ecosystem**, not simply an online pet-food store.
+
+---
+
+# 38. Development Priority
+
+Build the system in phases.
+
+### Phase 1 — Foundation
+
+Implement:
+
+* Project setup
+* Database
+* Authentication
+* RBAC
+* Customer dashboard
+* Admin dashboard
+* Pet profiles
+
+### Phase 2 — E-commerce
+
+Implement:
+
+* Products
+* Categories
+* Search
+* Filters
+* Cart
+* Checkout
+* Orders
+* Inventory
+
+### Phase 3 — Subscriptions
+
+Implement:
+
+* Subscription creation
+* Recurring schedules
+* Pause/resume
+* Skip delivery
+* Food consumption prediction
+* Subscription notifications
+
+### Phase 4 — Veterinary
+
+Implement:
+
+* Vet registration
+* Vet verification
+* Vet profiles
+* Availability
+* Appointments
+* Recommendations
+* Medical records
+* Chat
+
+### Phase 5 — Delivery
+
+Implement:
+
+* Delivery agents
+* Delivery assignment
+* Delivery status
+* Tracking architecture
+
+### Phase 6 — AI
+
+Implement:
+
+* PetCare AI assistant
+* Personalized recommendations
+* Pet profile context
+* Safety restrictions
+
+### Phase 7 — Analytics
+
+Implement:
+
+* Revenue analytics
+* Order analytics
+* Subscription analytics
+* User analytics
+* Veterinary analytics
+
+### Phase 8 — Production Polish
+
+Implement:
+
+* Security hardening
+* Responsive design
+* Loading states
+* Error handling
+* Notifications
+* Performance optimization
+* Testing
+* Documentation
+
+---
+
+# 39. Replit Execution Instructions
+
+Start by analyzing the complete requirements above.
+
+Do not attempt to implement every advanced feature in a single rushed step.
+
+First create the project architecture, database schema, authentication system, and core UI.
+
+Then implement each phase systematically.
+
+After each phase:
+
+1. Run the application.
+2. Check for TypeScript errors.
+3. Check for backend errors.
+4. Test API endpoints.
+5. Test database operations.
+6. Test authentication.
+7. Test role permissions.
+8. Fix errors before continuing.
+9. Keep the application runnable at every stage.
+
+Do not replace working functionality when implementing new features.
+
+Use reusable components and services instead of duplicating code.
+
+Keep environment variables in `.env` and provide a `.env.example`.
+
+Create a comprehensive `README.md` explaining:
+
+* Installation
+* Environment variables
+* Database setup
+* Prisma migrations
+* Seed data
+* Running frontend
+* Running backend
+* Demo accounts
+* API structure
+* Deployment instructions
+
+---
+
+# 40. Most Important Requirement
+
+**Build PetCare as a real, functional full-stack application rather than a visual prototype.**
+
+Every major screen should connect to actual application logic.
+
+The final product should demonstrate:
+
+**E-commerce + subscriptions + personalized recommendations + veterinary services + pet health management + delivery + payments + AI assistance.**
+
+Use realistic data, professional UI/UX, secure architecture, clean code, and scalable database design.
