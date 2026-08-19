@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "PawBox"
+description = "A warm mobile pet nutrition app that helps pet owners create a pet profile, discover veterinarian-reviewed food recommendations, choose a delivery plan, and manage subscriptions."
+version = "1.0.0"
+id = "artifacts/pawbox-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 19330
+
+[services.development]
+run = "pnpm --filter @workspace/pawbox-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pawbox-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/pawbox-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "19330"
+BASE_PATH = "/"
