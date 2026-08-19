@@ -23,6 +23,18 @@ function NativeTabLayout() {
         <Icon sf={{ default: 'shippingbox', selected: 'shippingbox.fill' }} />
         <Label>Plans</Label>
       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="shop">
+        <Icon sf={{ default: 'bag', selected: 'bag.fill' }} />
+        <Label>Shop</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="care">
+        <Icon sf={{ default: 'heart', selected: 'heart.fill' }} />
+        <Label>Care</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="assistant">
+        <Icon sf={{ default: 'message', selected: 'message.fill' }} />
+        <Label>AI</Label>
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
@@ -87,6 +99,27 @@ function ClassicTabLayout() {
             ) : (
               <Feather name="package" size={22} color={color} />
             ),
+        }}
+      />
+      <Tabs.Screen
+        name="shop"
+        options={{
+          title: 'Shop',
+          tabBarIcon: ({ color }) => <Feather name="shopping-bag" size={21} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="care"
+        options={{
+          title: 'Care',
+          tabBarIcon: ({ color }) => <Feather name="heart" size={21} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="assistant"
+        options={{
+          title: 'AI',
+          tabBarIcon: ({ color }) => <Feather name="message-circle" size={21} color={color} />,
         }}
       />
     </Tabs>
